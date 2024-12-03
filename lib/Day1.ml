@@ -10,19 +10,12 @@ module Solution : Day.SOLUTION_TYPE = struct
 3   9
 3   3|}
 
-  let parse (input : string) : int list list =
+  let[@ocaml.warning "-32"] parse (input : string) : int list list =
     input
     |> String.split_on_char '\n'
     |> List.filter String.is_empty
     |> List.map String.split_words
     |> List.map (List.map int_of_string)
-  ;;
-
-  let () =
-    parse example
-    |> List.iter (fun l ->
-      List.iter (Printf.printf "%d ") l;
-      Printf.printf "\n")
   ;;
 
   let get_part1 (_ : string) : int option = None
